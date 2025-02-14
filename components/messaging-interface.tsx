@@ -9,7 +9,8 @@ import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu, Users } from "lucide-react"
 
-export function MessagingInterface() {
+export function MessagingInterface() 
+{
     const [credits, setCredits] = useState(5)
     const [showMessages, setShowMessages] = useState(false)
     const [showProfile, setShowProfile] = useState(false)
@@ -39,11 +40,13 @@ export function MessagingInterface() {
                 <Sheet open={showMessages} onOpenChange={setShowMessages}>
                     <SheetContent side="left" className="w-full p-0 bg-[#0d1117] border-r border-[#141A23]">
                         <MessagesList
-                            onSelectChat={() => {
+                            onSelectChat={() => 
+                            {
                                 setShowMessages(false)
                                 setActiveView("chat")
                             }} 
-                            onCreateChat={() => {
+                            onCreateChat={() => 
+                            {
                                 setShowMessages(false)
                                 setActiveView("chat")
                             }}

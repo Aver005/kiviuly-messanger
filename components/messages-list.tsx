@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 import { useState } from "react"
-import { Search, Plus, ChevronDown, ChevronUp, Bell, BellOff, Circle } from "lucide-react"
+import { Bell, BellOff, ChevronDown, ChevronUp, Circle, Plus, Search } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Label } from "./ui/label";
+import { Label } from "./ui/label"
 
 
 interface MessagesListProps {
@@ -73,10 +73,12 @@ const categoriesInitial: Category[] = [
     // Add more categories...
 ]
 
-export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps) {
+export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps) 
+{
     const [categories, setCategories] = useState<Category[]>(categoriesInitial)
 
-    const toggleCategory = (categoryId: string) => {
+    const toggleCategory = (categoryId: string) => 
+    {
         setCategories(cats =>
             cats.map(cat => 
                 cat.id === categoryId ? { ...cat, isOpen: !cat.isOpen } : cat

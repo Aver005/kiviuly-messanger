@@ -22,26 +22,35 @@ export default [...compat.extends(
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
-), 
+),
 {
-    plugins: 
+    plugins:
     {
         react,
         "@typescript-eslint": typescriptEslint,
     },
 
-    languageOptions: 
+    languageOptions:
     {
         ecmaVersion: 2021,
         sourceType: "module",
     },
 
-    rules: 
+    rules:
     {
         curly: ["error", "multi"],
         indent: ["error", 4],
         quotes: ["error", "double"],
         "no-unused-vars": "warn",
         semi: ["error", "never"],
+        "brace-style": ["error", "allman"],
+        "sort-imports": ["error", 
+        {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "allowSeparatedGroups": false
+        }]
     },
 }, includeIgnoreFile(gitignorePath)];

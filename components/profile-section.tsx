@@ -1,33 +1,40 @@
-import { useState, useRef, useEffect } from "react"
-import { Phone, Video, MessageSquare, MoreHorizontal, X, Save, Trash2, Share, Download } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { Download, MessageSquare, MoreHorizontal, Phone, Save, Share, Trash2, Video, X } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
 
-export function ProfileSection() {
+export function ProfileSection() 
+{
     const [isEditingNote, setIsEditingNote] = useState(false)
     const [noteContent, setNoteContent] = useState("Mollis quis a vitae leo facilisis mauris leo. Sit vitae aenean parturient tincidunt urna mollis enim aliquet tortor.")
     const [isOptionsOpen, setIsOptionsOpen] = useState(false)
     const optionsRef = useRef<HTMLDivElement>(null)
 
-    const handleNoteEdit = () => {
+    const handleNoteEdit = () => 
+    {
         setIsEditingNote(true)
     }
 
-    const handleNoteSave = () => {
+    const handleNoteSave = () => 
+    {
         setIsEditingNote(false)
     }
 
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === "Enter" && !e.shiftKey) {
+    const handleKeyDown = (e: React.KeyboardEvent) => 
+    {
+        if (e.key === "Enter" && !e.shiftKey) 
+        {
             e.preventDefault()
             handleNoteSave()
         }
     }
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+    useEffect(() => 
+    {
+        const handleClickOutside = (event: MouseEvent) => 
+        {
             if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) 
                 setIsOptionsOpen(false)
       
@@ -132,7 +139,8 @@ export function ProfileSection() {
                         />
                         <X
                             className="absolute top-2 right-2 h-4 w-4 cursor-pointer text-gray-400"
-                            onClick={() => {
+                            onClick={() => 
+                            {
                                 setIsEditingNote(false)
                                 setNoteContent(noteContent)
                             }}

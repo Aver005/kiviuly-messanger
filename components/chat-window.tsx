@@ -1,4 +1,4 @@
-import { Mic, Smile, Plus, ChevronLeft, MoreVerticalIcon, PhoneIcon, SearchIcon, UserIcon } from "lucide-react"
+import { ChevronLeft, Mic, MoreVerticalIcon, PhoneIcon, Plus, SearchIcon, Smile, UserIcon } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,7 +9,8 @@ interface ChatWindowProps {
   onBack?: () => void
 }
 
-export function ChatWindow({ credits, setCredits, onBack }: ChatWindowProps) {
+export function ChatWindow({ credits, setCredits, onBack }: ChatWindowProps) 
+{
     return (
         <div className="flex flex-col h-full">
             <div className="flex items-center gap-4 p-4 pl-6 border-b border-[#141A23]">

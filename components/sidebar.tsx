@@ -1,8 +1,9 @@
-import { MessageSquare, Bell, Phone, Users, Settings, DollarSign } from "lucide-react"
+import { Bell, DollarSign, MessageSquare, Phone, Settings, Users } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link"
 
-export function Sidebar() {
+export function Sidebar() 
+{
     return (
         <div className="w-[72px] bg-[#0d1117] border-r h-full border-[#141A23] flex flex-col items-center py-4">
             <nav className="flex-1 flex flex-col gap-10 mt-2">
