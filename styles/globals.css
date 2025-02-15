@@ -48,6 +48,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -88,7 +89,42 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* Стили для скроллбара */
+::-webkit-scrollbar {
+  width: 12px;
+  /* Ширина вертикального скроллбара */
+  height: 12px;
+  /* Высота горизонтального скроллбара */
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+  /* Цвет фона трека скроллбара */
+  /* Закругление углов трека */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222d3d;
+  /* Цвет ползунка скроллбара */
+  /* Закругление углов ползунка */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Цвет ползунка при наведении */
+}
+
+/* Для Firefox */
+.scrollable {
+  scrollbar-width: thin;
+  /* Устанавливает ширину скроллбара */
+  scrollbar-color: #888 #f1f1f1;
+  /* Цвет ползунка и трека */
 }

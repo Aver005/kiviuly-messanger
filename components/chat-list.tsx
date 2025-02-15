@@ -1,11 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Bell, BellOff, ChevronDown, ChevronUp, Circle, Plus, Search } from "lucide-react"
+import { ChevronDown, ChevronUp, Circle, Plus, Search } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import {
+import
+{
     Dialog,
     DialogContent,
     DialogDescription,
@@ -17,36 +18,41 @@ import {
 import { Label } from "./ui/label"
 
 
-interface MessagesListProps {
-  onSelectChat: () => void
-  onCreateChat: () => void
+interface ChatListProps
+{
+    onSelectChat: () => void
+    onCreateChat: () => void
 }
 
-interface Chat {
-  id: number
-  name: string
-  message: string
-  lastActivityTime: string
-  avatar: string
-  verified?: boolean
-  unread: number
-  status: "online" | "offline" | "away"
-  notificationsMuted: boolean
+interface Chat
+{
+    id: number
+    name: string
+    message: string
+    lastActivityTime: string
+    avatar: string
+    verified?: boolean
+    unread: number
+    status: "online" | "offline" | "away"
+    notificationsMuted: boolean
 }
 
-interface Category {
-  id: string
-  name: string
-  isOpen: boolean
-  chats: Chat[]
+interface Category
+{
+    id: string
+    name: string
+    isOpen: boolean
+    chats: Chat[]
 }
 
-const categoriesInitial: Category[] = [
+const categoriesInitial: Category[] =
+[
     {
         id: "friends",
         name: "Friends",
         isOpen: true,
-        chats: [
+        chats:
+        [
             {
                 id: 1,
                 name: "Angelina Froster",
@@ -73,14 +79,14 @@ const categoriesInitial: Category[] = [
     // Add more categories...
 ]
 
-export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps) 
+export function ChatList({ onSelectChat, onCreateChat }: ChatListProps) 
 {
     const [categories, setCategories] = useState<Category[]>(categoriesInitial)
 
-    const toggleCategory = (categoryId: string) => 
+    const toggleCategory = (categoryId: string) =>
     {
         setCategories(cats =>
-            cats.map(cat => 
+            cats.map(cat =>
                 cat.id === categoryId ? { ...cat, isOpen: !cat.isOpen } : cat
             )
         )
@@ -91,7 +97,7 @@ export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps)
             <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                     <h1 className="text-xl font-semibold">Messages</h1>
-          
+
                     <Dialog>
                         <DialogTrigger>
                             <Plus className="h-5 w-5" />
@@ -100,21 +106,17 @@ export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps)
                             <DialogHeader>
                                 <DialogTitle>Chat creation</DialogTitle>
                                 <DialogDescription>
-                  This action cannot be undone. This will permanently delete your account
-                  and remove your data from our servers.
+                                    This action cannot be undone. This will permanently delete your account
+                                    and remove your data from our servers.
                                 </DialogDescription>
                             </DialogHeader>
                             <div className="grid gap-4 py-4">
                                 <div className="grid grid-cols-5 items-center gap-4">
-                                    <Label htmlFor="name">
-                    Name
-                                    </Label>
+                                    <Label htmlFor="name">Name</Label>
                                     <Input id="name" value="My New Chat!" className="col-span-4" />
                                 </div>
                                 <div className="grid grid-cols-5 items-center gap-4">
-                                    <Label htmlFor="username">
-                    ID
-                                    </Label>
+                                    <Label htmlFor="username">ID</Label>
                                     <Input id="username" value="@new-chat-1235" className="col-span-4" />
                                 </div>
                             </div>
@@ -154,7 +156,7 @@ export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps)
                         {category.isOpen && category.chats.map(chat => (
                             <div
                                 key={chat.id}
-                                className="flex items-center gap-4 p-4 hover:bg-[#1c2128] cursor-pointer"
+                                className="flex items-center gap-4 px-4 py-3 hover:bg-[#1c2128] cursor-pointer"
                                 onClick={onSelectChat}
                             >
                                 <div className="relative">
@@ -162,26 +164,25 @@ export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps)
                                         <AvatarImage src={chat.avatar} alt={chat.name} />
                                         <AvatarFallback>{chat.name[0]}</AvatarFallback>
                                     </Avatar>
-                  
+
                                     {/* Notification icon */}
                                     {/* <div className="absolute top-[-10px] left-[-10px]">
-                    {chat.notificationsMuted ? (
-                      <BellOff className="h-3 w-3 text-red-500" />
-                    ) : (
-                      <Bell className="h-3 w-3 text-green-500" />
-                    )}
-                  </div> */}
+                                        {chat.notificationsMuted ? (
+                                        <BellOff className="h-3 w-3 text-red-500" />
+                                        ) : (
+                                        <Bell className="h-3 w-3 text-green-500" />
+                                        )}
+                                    </div> */}
 
                                     {/* Status indicator */}
                                     <div className="absolute bottom-0 right-0">
                                         <Circle
-                                            className={`h-3 w-3 stroke-2 ${
-                                                chat.status === "online" 
-                                                    ? "text-green-500 fill-green-500" 
-                                                    : chat.status === "away" 
-                                                        ? "text-yellow-500 fill-yellow-500" 
-                                                        : "text-gray-500 fill-gray-500"
-                                            }`}
+                                            className={`h-3 w-3 stroke-2 ${chat.status === "online"
+                                                ? "text-green-500 fill-green-500"
+                                                : chat.status === "away"
+                                                    ? "text-yellow-500 fill-yellow-500"
+                                                    : "text-gray-500 fill-gray-500"
+                                                }`}
                                         />
                                     </div>
                                 </div>
@@ -191,7 +192,7 @@ export function MessagesList({ onSelectChat, onCreateChat }: MessagesListProps)
                                         <span className="font-medium">{chat.name}</span>
                                         {chat.verified && (
                                             <span className="text-xs bg-blue-500 text-white px-1 rounded">
-                        PRO
+                                                PRO
                                             </span>
                                         )}
                                     </div>
