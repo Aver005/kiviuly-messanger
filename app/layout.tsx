@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
+import { AppProvider } from "@/context/AppContext"
+import { Sidebar } from "@/components/sidebar"
+import Dialogs from "@/components/dialogs/dialogs"
 import "@/styles/globals.css"
 
 export const metadata: Metadata =
 {
     title: "Kiviuly Messanger",
-    description: "Created with v0",
-    generator: "v0.dev",
+    description: "",
+    generator: "nextjs, react, messanger"
 }
 
 export default function RootLayout({children,}: 
@@ -14,7 +17,15 @@ export default function RootLayout({children,}:
 {
     return (
         <html lang="ru">
-            <body>{children}</body>
+            <body>
+                <AppProvider>
+                    <Dialogs />
+                    <div className="flex h-screen">
+                        <Sidebar />
+                        {children}
+                    </div>
+                </AppProvider>
+            </body>
         </html>
     )
 }

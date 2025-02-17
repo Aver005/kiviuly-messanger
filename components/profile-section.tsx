@@ -1,26 +1,21 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Download, MessageSquare, MoreHorizontal, Phone, Save, Share, Trash2, Video, X } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Textarea } from "@/components/ui/textarea"
+import { User } from "@/types/interfaces"
+import { getFullName, getInitials } from "@/lib/utils"
 
-export function ProfileSection() 
+export function ProfileSection({ user }: { user: User }) 
 {
     const [isEditingNote, setIsEditingNote] = useState(false)
     const [noteContent, setNoteContent] = useState("Mollis quis a vitae leo facilisis mauris leo. Sit vitae aenean parturient tincidunt urna mollis enim aliquet tortor.")
     const [isOptionsOpen, setIsOptionsOpen] = useState(false)
     const optionsRef = useRef<HTMLDivElement>(null)
 
-    const handleNoteEdit = () => 
-    {
-        setIsEditingNote(true)
-    }
-
-    const handleNoteSave = () => 
-    {
-        setIsEditingNote(false)
-    }
+    const handleNoteEdit = () =>  setIsEditingNote(true)
+    const handleNoteSave = () => setIsEditingNote(false)
 
     const handleKeyDown = (e: React.KeyboardEvent) => 
     {
@@ -42,17 +37,18 @@ export function ProfileSection()
 
         document.addEventListener("mousedown", handleClickOutside)
         return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [])
+    }, 
+    [])
 
     return (
         <div className="flex flex-col h-full p-6 overflow-auto">
             <div className="text-center">
                 <Avatar className="w-24 h-24 sm:w-32 sm:h-32 mx-auto">
-                    <AvatarImage src="/placeholder.svg" alt="Mary Freund" />
-                    <AvatarFallback>MF</AvatarFallback>
+                    <AvatarImage src="/placeholder.svg" alt={user.username} />
+                    <AvatarFallback>{ getInitials(user) }</AvatarFallback>
                 </Avatar>
                 <div className="mt-4 flex items-center justify-center gap-2">
-                    <h2 className="text-lg sm:text-xl font-semibold">@Mary Freund</h2>
+                    <h2 className="text-lg sm:text-xl font-semibold">{ getFullName(user) }</h2>
                     <Badge variant="secondary" className="bg-blue-500">
                         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none">
                             <path
@@ -65,20 +61,23 @@ export function ProfileSection()
                         </svg>
                     </Badge>
                 </div>
+                <div className="mt-1">
+                    <span className="text-gray-400">@{user.username}</span>
+                </div>
             </div>
 
             <div className="mt-12 grid grid-cols-3 gap-4 text-center">
-                <div className="space-y-1">
+                <div className="space-y-2">
                     <MessageSquare className="h-5 w-5 sm:h-6 sm:w-6 mx-auto" />
                     <div className="text-sm">Message</div>
                     <div className="text-xs text-gray-400">10:30pm</div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
                     <Phone className="h-5 w-5 sm:h-6 sm:w-6 mx-auto" />
                     <div className="text-sm">Call</div>
                     <div className="text-xs text-gray-400">8:00pm</div>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
                     <Video className="h-5 w-5 sm:h-6 sm:w-6 mx-auto" />
                     <div className="text-sm">Video Call</div>
                     <div className="text-xs text-gray-400">10:00pm</div>
