@@ -1,3 +1,4 @@
+import { MessageCircleIcon, UsersIcon, PlusCircleIcon, SmileIcon, BellIcon, HashIcon, FolderIcon, KeyIcon, MailIcon, CameraIcon, HeartIcon, StarIcon, ThumbsUpIcon, ThumbsDownIcon, CheckIcon, CrossIcon, ClockIcon, GlobeIcon, LinkIcon, FileIcon, SettingsIcon } from "lucide-react"
 import { Category, Message, User, UserStatus } from "./interfaces"
 
 export const USERS = 
@@ -229,19 +230,20 @@ export const INIT_CATEGORIES: Category[] =
                 id: 1,
                 name: "Conference",
                 lastActivityTime: "1 min ago",
-                avatar: "/placeholder.svg",
+                avatar: "/13.svg",
                 unread: 2,
                 status: UserStatus.ONLINE,
                 notificationsMuted: false,
                 messages: MESSAGES,
                 members: [...Object.values(USERS)],
-                type: "chat"
+                type: "chat",
+                icon: 'bell'
             },
             {
                 id: 2,
                 name: "Frances Swann",
                 lastActivityTime: "yesterday",
-                avatar: "/placeholder.svg",
+                avatar: "/image.png",
                 verified: true,
                 unread: 0,
                 status: UserStatus.AWAY,
@@ -252,4 +254,29 @@ export const INIT_CATEGORIES: Category[] =
             },
         ],
     },
+]
+
+export const CHAT_ICONS = 
+[
+    { id: 'message', Component: MessageCircleIcon, color: '#6c757d' }, // Серый
+    { id: 'users', Component: UsersIcon, color: '#5a6268' }, // Темно-серый
+    { id: 'plus', Component: PlusCircleIcon, color: '#17a2b8' }, // Бирюзовый
+    { id: 'smile', Component: SmileIcon, color: '#ffc107' }, // Желтый
+    { id: 'bell', Component: BellIcon, color: '#fd7e14' }, // Оранжевый
+    { id: 'hash', Component: HashIcon, color: '#6f42c1' }, // Фиолетовый
+    { id: 'folder', Component: FolderIcon, color: '#20c997' }, // Светло-зеленый
+    { id: 'key', Component: KeyIcon, color: '#343a40' }, // Темно-серый
+    { id: 'mail', Component: MailIcon, color: '#007bff' }, // Синий
+    { id: 'camera', Component: CameraIcon, color: '#6c757d' }, // Серый
+    { id: 'heart', Component: HeartIcon, color: '#e83e8c' }, // Розовый
+    { id: 'star', Component: StarIcon, color: '#ffd700' }, // Золотистый
+    { id: 'thumbs-up', Component: ThumbsUpIcon, color: '#28a745' }, // Зеленый
+    { id: 'thumbs-down', Component: ThumbsDownIcon, color: '#dc3545' }, // Красный
+    { id: 'check', Component: CheckIcon, color: '#28a745' }, // Зеленый
+    { id: 'cross', Component: CrossIcon, color: '#dc3545' }, // Красный
+    { id: 'clock', Component: ClockIcon, color: '#6c757d' }, // Серый
+    { id: 'location', Component: GlobeIcon, color: '#007bff' }, // Синий
+    { id: 'link', Component: LinkIcon, color: '#6c757d' }, // Серый
+    { id: 'file', Component: FileIcon, color: '#6c757d' }, // Серый
+    { id: 'settings', Component: SettingsIcon, color: '#6c757d' }, // Серый
 ]

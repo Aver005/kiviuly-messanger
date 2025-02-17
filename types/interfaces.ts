@@ -59,6 +59,7 @@ export interface Chat
     messages: Message[]
     members: User[]
     type: 'direct' | 'chat' | 'channel'
+    icon?: string
 }
 
 export interface Category
